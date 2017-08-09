@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>What Can JavaScript Do?</h2>
+
+<p id="demo">JavaScript can change HTML content.</p>
+
+<script type="text/javascript">
+/*
+document.write(Number.MAX_VALUE+"<br />");
+	document.write(Number.MIN_VALUE+"<br />");
+
+	var samp_str = "There are some escaped characters \" \' \\ t \n";
+	document.write(samp_str+"<br />");
+
+	var str1 = "First String";
+	var str2 = "Second String";	
+
+	var combined = str1+str2;
+	document.write(combined+"<br />");
+
+
+	document.write("Length of the string:"+combined.length+"<br />");
+	document.write("Substring of combined:"+combined.substring(6,12)+"<br />");
+	document.write("Last character of the string is:"+combined.charAt(combined.length-1)+"<br />");
+	document.write("Index of t is:"+combined.indexOf('t')+"<br />");
+
+	var str_val = "10";
+	var num_val = 5;
+
+	var total = str_val+num_val;
+	document.write(total+"<br />");
+
+	var mul_total = str_val*num_val;
+	document.write(mul_total+"<br />");
+
+	var var_2 = Number(str_val);
+	total = num_val+var_2;
+	document.write(total+"<br />");
+
+	var var_3 = String(10);
+	total = str_val+var_3;
+	document.write(total+"<br />");
+
+		var float_var = 3.1415926538979238;
+	var float_str = float_var.toFixed(5);
+
+	document.write("Shorten Pi is"+float_str+"<br />");
+	document.write("Integer portion of the pi is:"+parseInt(float_str)+"<br />");
+	document.write("Data type of float_str is:"+typeof(float_str)+"<br />");
+	document.write("Data type of float_var is:"+typeof(float_var)+"<br />"); 
+
+var rand_1 = 12;
+var rand_2 = 25;
+
+document.write("Is 12 > 25 "+(rand_1>rand_2)+"<br />");
+document.write("Is 12 >= 25 "+(rand_1>=rand_2)+"<br />");
+document.write("Is 12 < 25 "+(rand_1<rand_2)+"<br />");
+document.write("Is 12 <= 25 "+(rand_1<=rand_2)+"<br />");
+document.write("Is 12 = 25 "+(rand_1==rand_2)+"<br />");
+document.write("Is 12 != 25 "+(rand_1!=rand_2)+"<br />");
+
+//logical operators
+document.write("Is 12 < 25 and 12 !=25"+((rand_1<rand_2)&&(rand_1!=rand_2))+"<br />");
+document.write("Is 12 > 25  or 12!=25"+((rand_1>rand_2)||(rand_1!=rand_2))+"<br />");
+document.write("Is 12 < 25 "+!(rand_1<rand_2)+"<br />");
+
+
+//array manipulation
+var vechiles = new Array("car","truck","van");
+document.write("The third item in the array is:"+vechiles[2]+"<br />");
+
+for(i in vechiles){
+	document.write("The array of vechiles is:"+vechiles[i]+"<br />");
+}
+//conditionakl statements
+var rand_var = (5 < 10)? " 5 is less than 10 ":" 5 is greater than 10 ";
+document.write("rand_var equals:"+rand_var+"<br />");
+
+if(5>5){
+	document.write("5 is less than 5"+"<br />");
+}
+else if(5<5){
+	document.write("5 is greater than 5"+"<br />");
+}
+else{
+	document.write("5 is eqaul to 5"+"<br />");
+}
+
+var state = "pensilvenia";
+switch(state){
+	case "California":
+	document.write("Hotter than me"+"<br />");
+	break;
+
+	case "pensilvenia":
+	document.write("Same as me"+"<br />");
+	break;
+
+	default:
+	document.write("I don't know"+"<br />");
+	break;
+}// while(count<=10){
+// 	if(count ==6){
+// 		break;
+// 	}
+// 	if(count%2){
+// 		count++;
+// 		continue;
+// 	}
+// 	document.write(count+"</br >");
+// 	count++;var count = 10;
+do{
+	document.write(count+"<br />");
+	count--;
+} while(count > 10);
+
+*/
+
+//class constructot
+function animal(){
+	this.name = "No name";
+	this.sound = "Grrr";
+	this.owner = "No owner";
+
+}
+
+//getter and setters
+animal.prototype.setOwner = function(newOwner){
+	if (typeof newOwner!='undefined') {
+		this.owner = newOwner;
+	}
+	else{
+		document.write("please enter a valid owner");
+	}
+}
+animal.prototype.getOwner = function(){
+	return this.owner;
+}
+
+animal.prototype.setName = function(newName){
+	if (typeof newName!='undefined') {
+		this.name = newName;
+	}
+	else{
+		document.write("please enter a valid name");
+	}
+}
+animal.prototype.getName = function(){
+	return this.name;
+}
+
+animal.prototype.setSound = function(newSound){
+	if (typeof newSound!='undefined') {
+		this.sound = newSound;
+	}
+	else{
+		document.write("please enter a valid sound");
+	}
+}
+animal.prototype.getSound = function(){
+	return this.sound;
+}
+
+var dog = new animal();//class object
+
+dog.setName("paul");
+dog.setOwner("micky");
+dog.setSound("Grrr");
+
+document.write(""+dog.getName()+"<br />");
+document.write(""+dog.getOwner()+"<br />");
+document.write(""+dog.getSound()+"<br />");
+document.write("<br />");
+
+
+//inheritance where cat calls the animal super class
+function cat(){
+	animal.call(this);
+	this.mode = "happy";
+}
+
+cat.prototype = new animal();
+cat.prototype.constructor = cat;
+
+cat.prototype.setMode = function(newMode){
+	if (typeof newMode!='undefined') {
+		this.mode = newMode;
+	}
+	else{
+		document.write("please enter a valid mode");
+	}
+}
+
+cat.prototype.getMode = function(){
+	return this.mode;
+}
+
+var sophie = new cat();
+
+sophie.setName("Rakib");
+sophie.setOwner("GNT");
+sophie.setSound("Meyaw");
+sophie.setMode("crazy");
+
+document.write(""+sophie.getName()+"<br />");
+document.write(""+sophie.getOwner()+"<br />");
+document.write(""+sophie.getSound()+"<br />");
+document.write(""+sophie.getMode()+"<br />");
+document.write("<br />");
+
+document.write(sophie instanceof cat);
+document.write(""+typeof(cat)+"<br />");
+document.write(""+typeof(sophie)+"<br />");
+
+
+
+</script>
+
+</body>
+</html>
